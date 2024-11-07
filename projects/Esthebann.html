@@ -6,10 +6,14 @@
     <title>Simple Bootstrap Website</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="Script/Graph_Esthebann_1.js"></script>
+    <script src="Script/Graph_Esthebann_2.js"></script>
+    <script src="Script/Graph_Esthebann_3.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="../index.html">Acceuil</a>
+    <a class="navbar-brand" href="../index.html">Accueil</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,11 +40,18 @@
 
 <div class="container mt-5">
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-4">L’IA, nouvel espoir pour des mots de passe plus sûrs ?
+        </h1>
+        <p class="lead">Par Esthebann Volle</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <p>À l’ère des cyberattaques en série, l’intelligence artificielle (IA) pourrait-elle enfin fournir des mots de passe plus fiables que ceux créés par des humains ? Pour en avoir le cœur net, j’ai demandé à ChatGPT de générer 500 mots de passe que j’ai testés via l’outil de sécurité de l’ANSSI (https://ssi.economie.gouv.fr/motdepasse#). En parallèle, 500 mots de passe créés par des utilisateurs humains, tirés de la célèbre base RockYou.txt, ont également été évalués.
+        </p>
+        <p><div id="donut_chart" class="col-md-12" style="height: 500px"></div>
+        <p>Les mots de passe ont été notés selon plusieurs critères de sécurité : présence d’au moins 14 caractères, absence de mots issus du dictionnaire, non-apparition dans des bases de données de mots de passe fuités, ainsi que présence de chiffres, de caractères spéciaux, et de majuscules et minuscules. Ces exigences permettent d’évaluer leur résistance face aux attaques par force brute ou par dictionnaire.</p>
+        <p> <div id="combo_chart" class="col-md-12" style="height: 500px"></div>
+        <p>Les résultats sont parlants. La distance d’édition maximale, indicateur de diversité, atteint 13 pour les mots de passe IA, contre 7 pour ceux des humains. Quant à la résistance moyenne, elle est de 3,7 pour l’IA, bien au-dessus du 1,0 des mots de passe humains. De plus, 67,8 % des mots de passe IA obtiennent une note de 4/5 en sécurité, contre seulement 32,2 % pour ceux des humains.</p>
+        <p><div id="column_chart" class="col-md-12" style="height: 500px"></div>
+        <p>Toutefois, même ces mots de passe IA ne sont pas invincibles : les tests estiment qu’ils pourraient tenir environ **trois ans face à une attaque ciblée**, contre quelques jours pour les mots de passe humains. En somme, si un pirate s’acharne, il finira probablement par y parvenir. Néanmoins, l’IA permet de repousser les limites de la sécurité en ligne en créant des mots de passe plus robustes, offrant ainsi une précieuse barrière de protection supplémentaire.</p>
     </div>
 </div>
 

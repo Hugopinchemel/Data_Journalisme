@@ -161,7 +161,7 @@ function drawChart() {
     var tableData = google.visualization.arrayToDataTable(data);
 
     var options = {
-        title: 'Attaques par million d\'habitants',
+        title: 'Attaques par milliard de PIB',
         hAxis: {
             title: 'Country',
             slantedText: true,

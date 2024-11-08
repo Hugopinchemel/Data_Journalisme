@@ -162,7 +162,7 @@ function drawChart() {
     var tableData = google.visualization.arrayToDataTable(data);
 
     var options = {
-        title: 'Cyberattacks per Billion USD GDP (Top 15)',
+        title: 'Attaques par milliard de PIB',
         hAxis: {title: 'Country', slantedText: true, slantedTextAngle: 45},
         vAxis: {title: 'Attacks'},
         chartArea: {width: '70%'},

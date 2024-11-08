@@ -30,24 +30,27 @@
 
 <div class="container mt-5">
     <div class="jumbotron">
-        <h1 class="display-4">Cyberattacks per Million Inhabitants</h1>
+        <h1 class="display-4">Cyberattaques par million d'habitants</h1>
         <p class="lead">Par <a href="https://www.linkedin.com/in/kilian-beney-27031622b/">Beney Kilian</a></p>
         <hr class="my-4">
 
         <div class="mt-5 text-center">
-            <button class="btn btn-primary" onclick="navigateTo('Kilian.html')">Million Inhabitants</button>
-            <button class="btn btn-secondary" onclick="navigateTo('Kilian2.html')">Billion USD GDP</button>
-            <button class="btn btn-success" onclick="navigateTo('KilianA.html')">Article</button>
+            <button class="btn btn-info" onclick="navigateTo('Kilian.html')">Attaques par million d'habitants</button>
+            <button class="btn btn-info" onclick="navigateTo('Kilian2.html')">Attaques par milliard USD de PIB</button>
+            <button class="btn btn-info" onclick="navigateTo('KilianA.html')">Article</button>
         </div>
 
-        <div class="col-md-12" id="columnchart_values"style="height: 500px"></div>
+        <div class="mt-5 text-center"> <!-- margin-top to add space between buttons and chart -->
+            <div class="col-md-12" id="columnchart_values" style="height: 500px"></div>
+        </div>
 
-    <!-- Toggle Button for Table -->
-    <div class="text-center mt-3">
-        <button onclick="toggleTable()" class="btn btn-info">Afficher/Cacher le Tableau</button>
-    </div>
+        <!-- Added margin-bottom to create space between button and table -->
+        <div class="text-center mt-4">
+            <button onclick="toggleTable()" class="btn btn-info">Afficher/Cacher le Tableau</button>
+        </div>
 
-    <div class="col-md-12" id="table_div" style="height: 500px"></div>
+        <!-- Added margin-top to the table to create space between button and table -->
+        <div class="col-md-12 mt-4" id="table_div" style="height: 500px"></div>
 
         <!-- Carte du monde des cyberattaques intégrée dans un iframe -->
         <div class="mt-5">
@@ -61,8 +64,6 @@
     <div class="container">
         <span class="text-muted">© 2024 Projet MMI groupe 6</span>
     </div>
-
-
 </footer>
 
 <!-- Bootstrap JS and dependencies -->

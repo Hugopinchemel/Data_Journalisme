@@ -79,7 +79,7 @@ function drawChart() {
     var options = {
         title: 'Attaques par million d\'habitants',
         hAxis: {
-            title: 'Country',
+            title: 'Pays (Top 15)',
             slantedText: true,
             slantedTextAngle: 45,
             textStyle: {
@@ -87,7 +87,7 @@ function drawChart() {
             }
         },
         vAxis: {
-            title: 'Attacks'
+            title: 'Attaques par million d\'habitants'
         },
         chartArea: {width: '70%'},
         height: 500,

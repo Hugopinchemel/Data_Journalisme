@@ -163,7 +163,7 @@ function drawChart() {
     var options = {
         title: 'Attaques par milliard de PIB',
         hAxis: {
-            title: 'Country',
+            title: 'Pays (Top 15)',
             slantedText: true,
             slantedTextAngle: 45,
             textStyle: {
@@ -171,7 +171,7 @@ function drawChart() {
             }
         },
         vAxis: {
-            title: 'Attacks'
+            title: 'Attaques par milliard de PIB'
         },
         chartArea: {width: '70%'},
         height: 500,

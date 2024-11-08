@@ -29,8 +29,8 @@ function drawChart() {
         ["Canada", 4596.38404],
         ["Chile", 4414.663212],
         ["China", 3281.161806],
-        ["China Hong Kong Special Administrative Region", 54229.74026],
-        ["China Macao Special Administrative Region", 22037.14286],
+        ["China Hong Kong ", 54229.74026],
+        ["China Macao ", 22037.14286],
         ["Colombia", 1797.749077],
         ["Costa Rica", 2272],
         ["Côte d'Ivoire", 818.7248322],
@@ -83,7 +83,7 @@ function drawChart() {
             slantedText: true,
             slantedTextAngle: 45,
             textStyle: {
-                fontSize: 18 // Increase font size for country names
+                fontSize: 10 // Reduce font size for country names
             }
         },
         vAxis: {

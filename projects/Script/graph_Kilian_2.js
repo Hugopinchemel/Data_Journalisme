@@ -30,8 +30,8 @@ function drawChart() {
         ["Canada", 78.81566333],
         ["Chile", 215.1074868],
         ["China", 262.0707194],
-        ["China Hong Kong Special Administrative Region", 979.2893996],
-        ["China Macao Special Administrative Region", 668.6605982],
+        ["China Hong Kong ", 979.2893996],
+        ["China Macao ", 668.6605982],
         ["Colombia", 265.8434373],
         ["Costa Rica", 162.8058473],
         ["Côte d'Ivoire", 297.9144281],
@@ -100,7 +100,7 @@ function drawChart() {
         ["Netherlands", 14.31356276],
         ["New Zealand", 262.4677441],
         ["Nigeria", 12.07497674],
-        ["Northern Mariana Islands", 1858.885017],
+        ["Northern Mariana ", 1858.885017],
         ["Norway", 76.10373515],
         ["Oman", 212.2790698],
         ["Pakistan", 316.9106092],
@@ -146,13 +146,12 @@ function drawChart() {
         ["United States of America", 74.23574344],
         ["Uruguay", 159.616876],
         ["Uzbekistan", 345.7122228],
-        ["Venezuela (Bolivarian Republic of)", 1062.376368],
+        ["Venezuela ", 1062.376368],
         ["Viet Nam", 483.9904187],
         ["Yemen", 607.3532484],
         ["Zambia", 479.4592626],
         ["Zimbabwe", 283.1595196]
     ];
-
     data.sort(function(a, b) {
         return b[1] - a[1];
     });
@@ -162,9 +161,18 @@ function drawChart() {
     var tableData = google.visualization.arrayToDataTable(data);
 
     var options = {
-        title: 'Attaques par milliard de PIB',
-        hAxis: {title: 'Country', slantedText: true, slantedTextAngle: 45},
-        vAxis: {title: 'Attacks'},
+        title: 'Attaques par million d\'habitants',
+        hAxis: {
+            title: 'Country',
+            slantedText: true,
+            slantedTextAngle: 45,
+            textStyle: {
+                fontSize: 10 // Reduce font size for country names
+            }
+        },
+        vAxis: {
+            title: 'Attacks'
+        },
         chartArea: {width: '70%'},
         height: 500,
         colors: ['#1b9e77']
@@ -173,8 +181,24 @@ function drawChart() {
     var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_values'));
     chart.draw(chartData, options);
 
+    var tableOptions = {
+        showRowNumber: true,
+        width: '100%',
+        height: '100%',
+        cssClassNames: {
+            headerRow: 'header-row',
+            tableRow: 'table-row',
+            oddTableRow: 'odd-table-row',
+            selectedTableRow: 'selected-table-row',
+            hoverTableRow: 'hover-table-row',
+            headerCell: 'header-cell',
+            tableCell: 'table-cell',
+            rowNumberCell: 'row-number-cell'
+        }
+    };
+
     var table = new google.visualization.Table(document.getElementById('table_div'));
-    table.draw(tableData, {showRowNumber: true, width: '100%', height: '100%'});
+    table.draw(tableData, tableOptions);
 }
 
 window.addEventListener('resize', function() {

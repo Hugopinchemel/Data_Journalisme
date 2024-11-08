@@ -161,7 +161,7 @@ function drawChart() {
     var tableData = google.visualization.arrayToDataTable(data);
 
     var options = {
-        title: 'Cyberattacks per Million Inhabitants (Top 15)',
+        title: 'Attaques par million d\'habitants',
         hAxis: {title: 'Country', slantedText: true, slantedTextAngle: 45},
         vAxis: {title: 'Attacks'},
         chartArea: {width: '70%'},

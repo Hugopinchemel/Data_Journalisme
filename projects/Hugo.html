@@ -2,111 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Passwords Analysis</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Charts Library -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawCharts);
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+    <script src="Script/Graph_Hugo_1.js"></script>
 
-        function drawCharts() {
-            drawComparisonChart('existing_words_chart', 'Existing Words Passwords', [
-                ['Password', 'Occurrences in Data Leak', 'Occurrences on Internet'],
-                ['a', 4425, 13404],
-                ['football', 3038, 7024],
-                ['dragon', 2511, 14484],
-                ['superman', 2067, 5556],
-                ['computer', 1885, 7178],
-                ['internet', 1521, 3445],
-                ['mustang', 1180, 3124],
-                ['loulou', 1142, 1902],
-                ['benjamin', 1101, 2661],
-                ['hello', 1099, 2738]
-            ]);
-
-            drawComparisonChart('letters_mean_something_chart', 'Letters Mean Something Passwords', [
-                ['Password', 'Occurrences in Data Leak', 'Occurrences on Internet'],
-                ['q1w2e3r4t5y6', 24234, 5168],
-                ['1q2w3e4r5t', 17484, 21511],
-                ['1qaz2wsx3edc', 15922, 3828],
-                ['abc123', 8445, 40358],
-                ['password1', 7764, 33400],
-                ['qwerty123', 6868, 48837],
-                ['10pace', 5438, 8570],
-                ['1qaz2wsx', 5180, 13555],
-                ['Indya123', 4823, 4942],
-                ['123qwe', 4042, 12478]
-            ]);
-
-            drawComparisonChart('numbers_ordonated_chart', 'Numbers Ordonated Passwords', [
-                ['Password', 'Occurrences in Data Leak', 'Occurrences on Internet'],
-                ['q1w2e3r4', 6499, 5522],
-                ['1q2w3e4r', 5877, 13368],
-                ['1234qwer', 3427, 8036],
-                ['Abcd1234', 3382, 1111],
-                ['qwer1234', 3225, 5771],
-                ['abcd1234', 3189, 6763],
-                ['asdf1234', 2339, 4087],
-                ['a1b2c3d4', 1570, 2260],
-                ['PASpass1234', 1217, 1218],
-                ['1a2b3c4d', 989, 1]
-            ]);
-
-            drawComparisonChart('only_numbers_chart', 'Only Numbers Passwords', [
-                ['Password', 'Occurrences in Data Leak', 'Occurrences on Internet'],
-                ['123456', 90309, 225636],
-                ['123456789', 46520, 183492],
-                ['12345678', 24862, 69241],
-                ['12345', 10625, 35105],
-                ['123123', 10426, 38985],
-                ['111111', 9530, 50728],
-                ['1234567890', 9055, 41398],
-                ['1234567', 7717, 43525],
-                ['123', 6021, 17841],
-                ['123321', 5281, 17549]
-            ]);
-
-            drawComparisonChart('only_text_chart', 'Only Text Passwords', [
-                ['Password', 'Occurrences in Data Leak', 'Occurrences on Internet'],
-                ['password', 18406, 104372],
-                ['qwerty', 17459, 107163],
-                ['qwertyuiop', 5050, 21195],
-                ['a', 4425, 13400],
-                ['NF', 4119, 7054],
-                ['Password', 3720, 7118],
-                ['zxcvbnm', 3656, 11020],
-                ['azerty', 3500, 5538],
-                ['iloveyou', 3271, 23592],
-                ['football', 3038, 7024]
-            ]);
-        }
-
-        function drawComparisonChart(elementId, title, dataArray) {
-            var data = google.visualization.arrayToDataTable(dataArray);
-
-            var options = {
-                title: title,
-                hAxis: {title: 'Password', titleTextStyle: {color: '#333'}},
-                vAxis: {title: 'Occurrences', minValue: 0},
-                series: {
-                    0: {type: 'line', color: '#1b9e77'},
-                    1: {type: 'line', color: '#d95f02'}
-                },
-                tooltip: {isHtml: true}
-            };
-
-            var chart = new google.visualization.ComboChart(document.getElementById(elementId));
-            chart.draw(data, options);
-        }
-    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="../index.html">Accueil</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarNav" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -123,38 +32,56 @@
 <div class="container mt-5">
     <div class="jumbotron">
         <h1 class="display-4">Passwords Analysis</h1>
-        <p class="lead">Par <a href="https://www.linkedin.com/in/kilian-beney-27031622b/">Beney Kilian</a></p>
+        <p class="lead">Par <a href="https://www.linkedin.com/in/kilian-beney-27031622b/">Pinchemel Hugo</a></p>
         <hr class="my-4">
     </div>
 
     <div class="article-content">
         <h2>La faiblesse des mots de passe courants : un aperçu des vulnérabilités</h2>
         <p>
-            Les mots de passe les plus fréquemment utilisés se composent souvent de suites de caractères simples, connues de tous, et donc très peu sécurisées. Après avoir testé une sélection de mots de passe issus de la fuite de données "Collection #1", aucun d’eux ne résiste plus d’une seconde face aux tentatives de piratage. Ces mots de passe proviennent de bases de données compromises, où plusieurs milliers d’entre eux ont été collectés, puis classés en fonction de leur type.
+            Les mots de passe les plus fréquemment utilisés se composent souvent de suites de caractères simples,
+            connues de tous, et donc très peu sécurisées. Après avoir testé une sélection de mots de passe issus de la
+            fuite de données "Collection #1", aucun d’eux ne résiste plus d’une seconde face aux tentatives de piratage.
+            Ces mots de passe proviennent de bases de données compromises, où plusieurs milliers d’entre eux ont été
+            collectés, puis classés en fonction de leur type.
         </p>
+        <div class="col-md-12" id="existing_words_chart" style="height: 500px;"></div>
+
         <p>
-            Le premier type de mots de passe regroupe des mots réels, couramment utilisés par les internautes. Ces termes sont largement répandus et apparaissent régulièrement dans les listes de mots de passe compromis. Dans le graphique correspondant, on observe en --- le nombre d’occurrences détectées dans notre fuite de données et en --- le nombre d’occurrences trouvées sur internet grâce à l’outil Kaspersky.
+            Le premier type de mots de passe regroupe des mots réels, couramment utilisés par les internautes. Ces
+            termes sont largement répandus et apparaissent régulièrement dans les listes de mots de passe compromis.
         </p>
+        <div class="col-md-12" id="letters_mean_something_chart" style="height: 500px;"></div>
+
         <p>
-            Un autre graphique met en évidence les suites de lettres et de chiffres. On y retrouve des combinaisons basiques telles que "AZERTY" ou "123456", très populaires pour des comptes non essentiels ou des adresses pourriels. Ces mots de passe reflètent une certaine banalité, souvent utilisée par des utilisateurs pour des comptes qu’ils estiment sans importance.
+            Un autre graphique met en évidence les suites de lettres et de chiffres. On y retrouve des combinaisons
+            basiques telles que "AZERTY" ou "123456", très populaires pour des comptes non essentiels ou des adresses
+            pourriels. Ces mots de passe reflètent une certaine banalité, souvent utilisée par des utilisateurs pour des
+            comptes qu’ils estiment sans importance.
         </p>
+        <div class="col-md-12" id="numbers_ordonated_chart" style="height: 500px;"></div>
+
         <p>
-            Un troisième type de mots de passe consiste en des suites de nombres ordonnées, créées par un simple glissement de doigts sur la partie supérieure des touches du clavier. Par exemple, des combinaisons allant de 1 à 0 sont typiques de cette catégorie, faciles à deviner et extrêmement vulnérables.
+            Un troisième type de mots de passe consiste en des suites de nombres ordonnées, créées par un simple
+            glissement de doigts sur la partie supérieure des touches du clavier. Par exemple, des combinaisons allant
+            de 1 à 0 sont typiques de cette catégorie, faciles à deviner et extrêmement vulnérables.
         </p>
+        <div class="col-md-12" id="only_numbers_chart" style="height: 500px;"></div>
+
         <p>
-            Enfin, une dernière catégorie comprend les mots de passe constitués uniquement de caractères, mais sans que ces caractères forment des mots significatifs. On y retrouve des suites comme "qwerty" et "azerty", qui ne sont pas des mots en soi, mais qui proviennent de la disposition des claviers et sont donc très répandues.
+            Enfin, une dernière catégorie comprend les mots de passe constitués uniquement de caractères, mais sans que
+            ces caractères forment des mots significatifs. On y retrouve des suites comme "qwerty" et "azerty", qui ne
+            sont pas des mots en soi, mais qui proviennent de la disposition des claviers et sont donc très répandues.
         </p>
+        <div class="col-md-12" id="only_text_chart" style="height: 500px;"></div>
+
         <p>
-            En somme, les mots de passe analysés ici montrent à quel point les pratiques de création de mots de passe restent faibles et faciles à contourner. Ces résultats mettent en lumière la nécessité d’adopter des stratégies de sécurisation plus robustes et d’éviter les schémas communs.
+            En somme, les mots de passe analysés ici montrent à quel point les pratiques de création de mots de passe
+            restent faibles et faciles à contourner. Ces résultats mettent en lumière la nécessité d’adopter des
+            stratégies de sécurisation plus robustes et d’éviter les schémas communs.
         </p>
     </div>
 
-    <!-- Charts -->
-    <div id="existing_words_chart" style="width: 100%; height: 500px;"></div>
-    <div id="letters_mean_something_chart" style="width: 100%; height: 500px;"></div>
-    <div id="numbers_ordonated_chart" style="width: 100%; height: 500px;"></div>
-    <div id="only_numbers_chart" style="width: 100%; height: 500px;"></div>
-    <div id="only_text_chart" style="width: 100%; height: 500px;"></div>
 </div>
 
 <footer class="footer bg-light text-center py-3">

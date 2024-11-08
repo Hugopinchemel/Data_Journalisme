@@ -12,7 +12,6 @@ function drawChart() {
         title: "Distance d'édition maximale (500 mots de passe par IA et Humains)",
         vAxis: {title: "Valeurs"},
         hAxis: {title: "Source"},
-        colors: ['#FF7F7F']
     };
 
 

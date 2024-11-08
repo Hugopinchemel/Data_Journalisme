@@ -11,7 +11,6 @@ function drawChart() {
     var options = {
         title: 'Répartition des notes de résistance (500 mots de passe IA)',
         pieHole: 0.4,
-        colors: ['#87CEEB', '#FFA500']
     };
 
 

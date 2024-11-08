@@ -13,7 +13,6 @@ function drawChart() {
         vAxis: {title: "Valeurs"},
         hAxis: {title: "Source"},
         seriesType: "bars",
-        colors: ['#98FB98', '#FFD700', '#87CEEB']
     };
 
 

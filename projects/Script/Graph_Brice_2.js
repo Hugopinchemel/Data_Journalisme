@@ -1,31 +1,35 @@
-google.charts.load('current', {'packages': ['bar']});
+google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Année', 'Taux de piratages réussis sur les organisations (%) ', 'Taux de piratages échoués sur les organisations (%)', 'Taux de piratages réussis sur les organisations avec A2F (%)', 'Taux de piratages échoués sur les organisations avec A2F (%)'],
-        ['2016', 90, 10, 0, 0],
-        ['2017', 89, 11, 0, 0],
-        ['2018', 88, 12, 70, 38],
-        ['2019', 88, 12, 63, 47],
-        ['2020', 85, 15, 50, 50],
-        ['2021', 80, 20, 48, 52],
-        ['2022', 78, 22, 49, 53],
-        ['2023', 75, 25, 45, 55],
-        ['2024', 70, 30, 31, 69],
+        ['Year', 'Utilisation du 2FA (%) ', 'Piratages réussis (%) '],
+        ['2016',  20, 40],
+        ['2017',  30, 35],
+        ['2018',  40, 30],
+        ['2019',  50, 20],
+        ['2020',  56, 10],
+        ['2021',  60, 8],
+        ['2022',  62, 6],
+        ['2023',  64, 5],
+        ['2024',  69, 2],
     ]);
 
 
     var options = {
-        chart: {
-            title: 'Taux de piratages sur les organisations : 2016-2024',
-        }
+        title: 'Utilisation du 2FA et taux de piratages réussis chez les particuliers (2016-2024)',
+        echo : 'Google Threat Horizons' ,
+        curveType: 'function',
+        legend: { position: 'bottom' },
+        hAxis: { minValue: 0, maxValue: 9 },
+        pointSize: 10,
+        pointShape: { type: 'star', sides: 4 },
     };
 
 
-    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
+    chart.draw(data, options);
 }

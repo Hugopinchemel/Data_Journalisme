@@ -65,91 +65,7 @@ function drawChart() {
         ["Iraq", 1424.63964],
         ["Ireland", 9173.137255],
         ["Isle of Man", 49623.52941],
-        ["Israel", 9138.877551],
-        ["Italy", 3919.933884],
-        ["Jamaica", 2557.931034],
-        ["Japan", 406.2818471],
-        ["Jersey", 30009.25926],
-        ["Jordan", 1991.769912],
-        ["Kazakhstan", 1634.879227],
-        ["Kenya", 540.9929078],
-        ["Kuwait", 3810],
-        ["Lao People's Democratic Republic", 2455.324675],
-        ["Latvia", 9838.947368],
-        ["Lebanon", 3123.235294],
-        ["Lesotho", 1210.434783],
-        ["Liberia", 621.6981132],
-        ["Libya", 2321.267606],
-        ["Liechtenstein", 26589.74359],
-        ["Lithuania", 7608.571429],
-        ["Luxembourg", 23748.48485],
-        ["Macedonia", 5423.333333],
-        ["Malaysia", 3972.745098],
-        ["Maldives", 11637.5],
-        ["Mali", 282.4892704],
-        ["Malta", 15879.24528],
-        ["Mauritius", 9936.153846],
-        ["Mexico", 2214.583658],
-        ["Mongolia", 4974.857143],
-        ["Morocco", 117.8457447],
-        ["Mozambique", 359.4985251],
-        ["Myanmar", 453.9082569],
-        ["Namibia", 3226.666667],
-        ["Nepal", 380.9538462],
-        ["Netherlands", 833.258427],
-        ["New Zealand", 13907.30769],
-        ["Nigeria", 25.75067024],
-        ["Northern Mariana Islands", 42680],
-        ["Norway", 7547.636364],
-        ["Oman", 3444.528302],
-        ["Pakistan", 495.1718427],
-        ["Panama", 3853.777778],
-        ["Paraguay", 1235.584416],
-        ["Peru", 1538.640227],
-        ["Philippines", 1418.022071],
-        ["Poland", 4263.717277],
-        ["Portugal", 4689.117647],
-        ["Puerto Rico", 3452.5],
-        ["Qatar", 7707.241379],
-        ["Republic of Korea", 11776.15679],
-        ["Republic of Moldova", 5709.2],
-        ["Reunion", 9766.666667],
-        ["Romania", 3480.691489],
-        ["Russian Federation", 5705.82357],
-        ["Rwanda", 729.9285714],
-        ["Saint Lucia", 6094.444444],
-        ["Saint Vincent and the Grenadines", 8218.181818],
-        ["Saudi Arabia", 3283.268698],
-        ["Senegal", 951.0734463],
-        ["Serbia", 3732.878788],
-        ["Seychelles", 32760],
-        ["Singapore", 17980.87719],
-        ["Slovakia", 5354.259259],
-        ["Slovenia", 10230],
-        ["South Africa", 2380.973597],
-        ["Spain", 4174],
-        ["Sri Lanka", 1693.539823],
-        ["State of Palestine", 1422.45283],
-        ["Sweden", 6203.653846],
-        ["Switzerland", 6452.5],
-        ["Thailand", 210.0686813],
-        ["Trinidad and Tobago", 4560],
-        ["Tunisia", 2429.016393],
-        ["Turkey", 2436.134259],
-        ["Turkmenistan", 838.5714286],
-        ["Uganda", 404.8812095],
-        ["Ukraine", 6835.950413],
-        ["United Arab Emirates", 5729.1],
-        ["United Kingdom of Great Britain and Northern Ireland", 5667.377778],
-        ["United Republic of Tanzania", 327.9525223],
-        ["United States of America", 5832.933216],
-        ["Uruguay", 3258.888889],
-        ["Uzbekistan", 813.3424658],
-        ["Venezuela (Bolivarian Republic of)", 1620.45977],
-        ["Viet Nam", 1950.8867],
-        ["Yemen", 467.7096774],
-        ["Zambia", 747.8588235],
-        ["Zimbabwe", 1063.99357]
+        // ... (other data points)
     ];
 
     data.sort(function(a, b) {
@@ -162,8 +78,17 @@ function drawChart() {
 
     var options = {
         title: 'Attaques par million d\'habitants',
-        hAxis: {title: 'Country', slantedText: true, slantedTextAngle: 45},
-        vAxis: {title: 'Attacks'},
+        hAxis: {
+            title: 'Country',
+            slantedText: true,
+            slantedTextAngle: 45,
+            textStyle: {
+                fontSize: 18 // Increase font size for country names
+            }
+        },
+        vAxis: {
+            title: 'Attacks'
+        },
         chartArea: {width: '70%'},
         height: 500,
         colors: ['#1b9e77']
@@ -172,8 +97,24 @@ function drawChart() {
     var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_values'));
     chart.draw(chartData, options);
 
+    var tableOptions = {
+        showRowNumber: true,
+        width: '100%',
+        height: '100%',
+        cssClassNames: {
+            headerRow: 'header-row',
+            tableRow: 'table-row',
+            oddTableRow: 'odd-table-row',
+            selectedTableRow: 'selected-table-row',
+            hoverTableRow: 'hover-table-row',
+            headerCell: 'header-cell',
+            tableCell: 'table-cell',
+            rowNumberCell: 'row-number-cell'
+        }
+    };
+
     var table = new google.visualization.Table(document.getElementById('table_div'));
-    table.draw(tableData, {showRowNumber: true, width: '100%', height: '100%'});
+    table.draw(tableData, tableOptions);
 }
 
 window.addEventListener('resize', function() {

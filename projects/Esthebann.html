@@ -3,13 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Bootstrap Website</title>
+    <title>Passwords Analysis</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Charts Library -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="Script/Graph_Esthebann_1.js"></script>
-    <script src="Script/Graph_Esthebann_2.js"></script>
-    <script src="Script/Graph_Esthebann_3.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart', 'geochart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawDonutChart();
+            drawRegionsMap();
+        }
+
+        function drawDonutChart() {
+            var data2 = google.visualization.arrayToDataTable([
+                ['Note', 'Pourcentage'],
+                ['3/5', 32.2],
+                ['4/5', 67.8]
+            ]);
+
+            var options2 = {
+                title: 'Répartition des notes de résistance (500 mots de passe IA)',
+                pieHole: 0.4,
+                colors: ['#87CEEB', '#FFA500']
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('donut_chart'));
+            chart2.draw(data2, options2);
+        }
+
+        function drawRegionsMap() {
+            const data = google.visualization.arrayToDataTable([
+                ['Country', 'Score de Fiabilité des Mots de Passe (0-5)'],
+                ['France', 1.6],
+                ['Germany', 1.8],
+                ['United Kingdom', 1.9],
+                ['Italy', 1.5],
+                ['Spain', 1.6],
+                ['Belgium', 1.5],
+                ['Portugal', 1.4],
+                ['Russia', 1.7],
+                ['Ukraine', 1.1],
+                ['United States', 1.9],
+                ['Canada', 1.8],
+                ['Japan', 1.6],
+                ['Australia', 1.2],
+                ['Brazil', 1.3],
+                ['Mexico', 1.2],
+                ['Argentina', 1.3],
+                ['China', 1.7]
+            ]);
+
+            const options = {
+                colorAxis: { minValue: 0, maxValue: 5, colors: ['#e60000', '#ffcc00', '#00cc66'] },
+                legend: { position: 'bottom' },
+                backgroundColor: '#e8f5ff',
+                datalessRegionColor: '#f0f0f0',
+                defaultColor: '#cccccc'
+            };
+
+            const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,40 +77,47 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../projects/Brice.html">Brice</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../projects/Esthebann.html">Esthebann</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../projects/Hugo.html">Hugo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../projects/Kilian.html">Kilian</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../projects/Roxane.html">Roxane</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="../projects/Brice.html">Brice</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projects/Esthebann.html">Esthebann</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projects/Hugo.html">Hugo</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projects/Kilian.html">Kilian</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projects/Roxane.html">Roxane</a></li>
         </ul>
     </div>
 </nav>
 
 <div class="container mt-5">
     <div class="jumbotron">
-        <h1 class="display-4">L’IA, nouvel espoir pour des mots de passe plus sûrs ?
-        </h1>
-        <p class="lead">Par <a href="https://www.linkedin.com/in/esthebann-volle-750924294/">Vollé Esthebann</a></p>
+        <h1 class="display-4">Passwords Analysis</h1>
+        <p class="lead">Par <a href="https://www.linkedin.com/in/kilian-beney-27031622b/">Beney Kilian</a></p>
         <hr class="my-4">
-        <p>À l’ère des cyberattaques en série, l’intelligence artificielle (IA) pourrait-elle enfin fournir des mots de passe plus fiables que ceux créés par des humains ? Pour en avoir le cœur net, j’ai demandé à ChatGPT de générer 500 mots de passe que j’ai testés via l’outil de sécurité de l’ANSSI (https://ssi.economie.gouv.fr/motdepasse#). En parallèle, 500 mots de passe créés par des utilisateurs humains, tirés de la célèbre base RockYou.txt, ont également été évalués.
-        </p>
-        <p><div id="donut_chart" class="col-md-12" style="height: 500px"></div>
-        <p>Les mots de passe ont été notés selon plusieurs critères de sécurité : présence d’au moins 14 caractères, absence de mots issus du dictionnaire, non-apparition dans des bases de données de mots de passe fuités, ainsi que présence de chiffres, de caractères spéciaux, et de majuscules et minuscules. Ces exigences permettent d’évaluer leur résistance face aux attaques par force brute ou par dictionnaire.</p>
-        <p> <div id="combo_chart" class="col-md-12" style="height: 500px"></div>
-        <p>Les résultats sont parlants. La distance d’édition maximale, indicateur de diversité, atteint 13 pour les mots de passe IA, contre 7 pour ceux des humains. Quant à la résistance moyenne, elle est de 3,7 pour l’IA, bien au-dessus du 1,0 des mots de passe humains. De plus, 67,8 % des mots de passe IA obtiennent une note de 4/5 en sécurité, contre seulement 32,2 % pour ceux des humains.</p>
-        <p><div id="column_chart" class="col-md-12" style="height: 500px"></div>
-        <p>Toutefois, même ces mots de passe IA ne sont pas invincibles : les tests estiment qu’ils pourraient tenir environ **trois ans face à une attaque ciblée**, contre quelques jours pour les mots de passe humains. En somme, si un pirate s’acharne, il finira probablement par y parvenir. Néanmoins, l’IA permet de repousser les limites de la sécurité en ligne en créant des mots de passe plus robustes, offrant ainsi une précieuse barrière de protection supplémentaire.</p>
     </div>
+
+    <div class="article-content">
+        <h2>La faiblesse des mots de passe courants : un aperçu des vulnérabilités</h2>
+        <p>
+            Les mots de passe les plus fréquemment utilisés se composent souvent de suites de caractères simples, connues de tous, et donc très peu sécurisées. Après avoir testé une sélection de mots de passe issus de la fuite de données "Collection #1", aucun d’eux ne résiste plus d’une seconde face aux tentatives de piratage. Ces mots de passe proviennent de bases de données compromises, où plusieurs milliers d’entre eux ont été collectés, puis classés en fonction de leur type.
+        </p>
+        <p>
+            Le premier type de mots de passe regroupe des mots réels, couramment utilisés par les internautes. Ces termes sont largement répandus et apparaissent régulièrement dans les listes de mots de passe compromis. Dans le graphique correspondant, on observe en --- le nombre d’occurrences détectées dans notre fuite de données et en --- le nombre d’occurrences trouvées sur internet grâce à l’outil Kaspersky.
+        </p>
+        <p>
+            Un autre graphique met en évidence les suites de lettres et de chiffres. On y retrouve des combinaisons basiques telles que "AZERTY" ou "123456", très populaires pour des comptes non essentiels ou des adresses pourriels. Ces mots de passe reflètent une certaine banalité, souvent utilisée par des utilisateurs pour des comptes qu’ils estiment sans importance.
+        </p>
+        <p>
+            Un troisième type de mots de passe consiste en des suites de nombres ordonnées, créées par un simple glissement de doigts sur la partie supérieure des touches du clavier. Par exemple, des combinaisons allant de 1 à 0 sont typiques de cette catégorie, faciles à deviner et extrêmement vulnérables.
+        </p>
+        <p>
+            Enfin, une dernière catégorie comprend les mots de passe constitués uniquement de caractères, mais sans que ces caractères forment des mots significatifs. On y retrouve des suites comme "qwerty" et "azerty", qui ne sont pas des mots en soi, mais qui proviennent de la disposition des claviers et sont donc très répandues.
+        </p>
+        <p>
+            En somme, les mots de passe analysés ici montrent à quel point les pratiques de création de mots de passe restent faibles et faciles à contourner. Ces résultats mettent en lumière la nécessité d’adopter des stratégies de sécurisation plus robustes et d’éviter les schémas communs.
+        </p>
+    </div>
+
+    <!-- Charts -->
+    <div id="donut_chart" style="width: 100%; height: 500px;"></div>
+    <div id="regions_div" style="width: 100%; height: 600px;"></div>
 </div>
 
 <footer class="footer bg-light text-center py-3">
@@ -64,6 +129,6 @@
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

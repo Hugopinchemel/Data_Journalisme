@@ -8,10 +8,10 @@ function drawCharts() {
     // Données pour le graphique 1 : Mots de passe trop courts
     var dataShort = google.visualization.arrayToDataTable([
         ['Secteur', 'Pourcentage'],
-        ['TRADING', 11.56],
-        ['SHOPPING', 38.91],
-        ['MONETARY', 8.57],
-        ['GAMING', 88.13]
+        ['Banque', 11.56],
+        ['Commerce', 38.91],
+        ['Achat en ligne', 8.57],
+        ['Jeux vidéo', 68.13]
     ]);
 
     var optionsShort = {
@@ -25,10 +25,10 @@ function drawCharts() {
     // Données pour le graphique 2 : Mots de passe pas assez complexes
     var dataComplexity = google.visualization.arrayToDataTable([
         ['Secteur', 'Pourcentage'],
-        ['TRADING', 16.35],
-        ['SHOPPING', 38.23],
-        ['MONETARY', 9.99],
-        ['GAMING', 59.57]
+        ['Banque', 16.35],
+        ['Commerce', 22.23],
+        ['Achat en ligne', 29.99],
+        ['Jeux vidéo', 41.57]
     ]);
 
     var optionsComplexity = {
@@ -42,10 +42,10 @@ function drawCharts() {
     // Données pour le graphique 3 : Mots de passe dans le dictionnaire
     var dataInDictionary = google.visualization.arrayToDataTable([
         ['Secteur', 'Pourcentage'],
-        ['TRADING', 4.17],
-        ['SHOPPING', 4.19],
-        ['MONETARY', 3.72],
-        ['GAMING', 9.54]
+        ['Banque', 4.17],
+        ['Commerce', 4.19],
+        ['Achat en ligne', 5.72],
+        ['Jeux vidéo', 9.54]
     ]);
 
     var optionsInDictionary = {

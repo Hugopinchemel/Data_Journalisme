@@ -23,7 +23,7 @@ function drawChart() {
         curveType: 'function',
         legend: { position: 'bottom' },
         hAxis: { minValue: 0, maxValue: 9 },
-        pointSize: 10,
+        pointSize: 20,
         pointShape: { type: 'star', sides: 4 },
     };
 

@@ -1,11 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Bootstrap Website</title>
+  <title>Analyse de sécurité des mots de passe par secteur</title>
+
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Chargement de la bibliothèque Google Charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+
+    // Une fois que la bibliothèque est chargée, on appelle la fonction pour dessiner les graphiques
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+
+      // Données pour le graphique 1 : Mots de passe trop courts
+      var dataShort = google.visualization.arrayToDataTable([
+        ['Secteur', 'Pourcentage'],
+        ['TRADING', 11.56],
+        ['SHOPPING', 38.91],
+        ['MONETARY', 8.57],
+        ['GAMING', 88.13]
+      ]);
+
+      var optionsShort = {
+        title: 'Pourcentage de mots de passe trop courts par secteur',
+        pieHole: 0.4
+      };
+
+      var chartShort = new google.visualization.PieChart(document.getElementById('chart_short'));
+      chartShort.draw(dataShort, optionsShort);
+
+      // Données pour le graphique 2 : Mots de passe pas assez complexes
+      var dataComplexity = google.visualization.arrayToDataTable([
+        ['Secteur', 'Pourcentage'],
+        ['TRADING', 16.35],
+        ['SHOPPING', 38.23],
+        ['MONETARY', 9.99],
+        ['GAMING', 59.57]
+      ]);
+
+      var optionsComplexity = {
+        title: 'Pourcentage de mots de passe pas assez complexes par secteur',
+        pieHole: 0.4
+      };
+
+      var chartComplexity = new google.visualization.PieChart(document.getElementById('chart_complexity'));
+      chartComplexity.draw(dataComplexity, optionsComplexity);
+
+      // Données pour le graphique 3 : Mots de passe dans le dictionnaire
+      var dataInDictionary = google.visualization.arrayToDataTable([
+        ['Secteur', 'Pourcentage'],
+        ['TRADING', 4.17],
+        ['SHOPPING', 4.19],
+        ['MONETARY', 3.72],
+        ['GAMING', 9.54]
+      ]);
+
+      var optionsInDictionary = {
+        title: 'Pourcentage de mots de passe présents dans le dictionnaire par secteur',
+        pieHole: 0.4
+      };
+
+      var chartInDictionary = new google.visualization.PieChart(document.getElementById('chart_in_dictionary'));
+      chartInDictionary.draw(dataInDictionary, optionsInDictionary);
+
+      // Graphique 4 : Pourcentage de mot de passe complexe par secteur
+      var dataComplexite = google.visualization.arrayToDataTable([
+        ['Secteur', 'Pourcentage de mot de passe complexe (%)'],
+        ['Banque', 29.13],
+        ['Commerce', 24.98],
+        ['Jeux vidéo', 11.24],
+        ['Achat en ligne', 9.04]
+      ]);
+
+      var optionsComplexite = {
+        title: 'Complexité moyenne des mots de passe par secteur',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Secteur',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Complexité Moyenne (%)'
+        },
+        bars: 'vertical',
+        legend: { position: 'none' },
+        backgroundColor: 'transparent'
+      };
+
+      var chartComplexite = new google.visualization.BarChart(document.getElementById('chart_complexite'));
+      chartComplexite.draw(dataComplexite, optionsComplexite);
+    }
+  </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,32 +107,40 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="../projects/Brice.html">Brice</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../projects/Esthebann.html">Esthebann</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../projects/Hugo.html">Hugo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../projects/Kilian.html">Kilian</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../projects/Roxane.html">Roxane</a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="../projects/Brice.html">Brice</a></li>
+      <li class="nav-item"><a class="nav-link" href="../projects/Esthebann.html">Esthebann</a></li>
+      <li class="nav-item"><a class="nav-link" href="../projects/Hugo.html">Hugo</a></li>
+      <li class="nav-item"><a class="nav-link" href="../projects/Kilian.html">Kilian</a></li>
+      <li class="nav-item"><a class="nav-link" href="../projects/Roxane.html">Roxane</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="container mt-5">
   <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
+    <h1 class="display-4">Analyse de la sécurité des mots de passe par secteur</h1>
     <p class="lead">Par <a href="https://www.linkedin.com/in/roxane-horchower-558a6628a/">Horchower Roxane</a></p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+ </div>
+
+  <div class="article-content">
+    <h2>Sécurité des mots de passe: quels secteurs sont les plus exposés?</h2>
+    <p>Face à la hausse des cyberattaques, les mots de passe restent la première barrière pour protéger les données sensibles. Pourtant, les pratiques de sécurité varient fortement d'un secteur à l'autre.</p>
+    <p>La fuite de données “Collection 1” a révélé les failles des pratiques de sécurité des mots de passe dans plusieurs secteurs, incluant près de 773 millions de mots de passe et adresses email compromises. En analysant les données de catégories diverses, comme le trading ou le gaming, des différences flagrantes ressortent.</p>
+    <p>Les secteurs à fort enjeu financier, comme le commerce, tendent à utiliser des mots de passe plus complexes, combinant majuscules, chiffres et caractères spéciaux, reflet de la criticité des informations bancaires protégées. En revanche, dans le gaming et les sites e-commerce, les mots de passe sont souvent plus simples et réutilisés, exposant les utilisateurs à des risques accrus de cyberattaques. Ces données montrent que, malgré les risques, la sécurité des mots de passe n’est optimale que dans les secteurs aux enjeux financiers élevés. Un besoin urgent d’améliorer les pratiques de sécurité reste à développer.</p>
+    <p>Comme le souligne la chaîne Twitter de l’ANSSI : "Les mots de passe faibles sont un passeport pour les cybercriminels. Les entreprises doivent urgemment investir dans des solutions de protection robustes." (ANSSI, @ANSSI_France, 2023).</p>
+    <p>Sources :</p>
+    <ul>
+      <li>Verizon - Data Breach Investigations Report 2023</li>
+      <li>ANSSI - @ANSSI_France, 2023</li>
+    </ul>
+  </div>
+
+  <div class="chart-container">
+    <div id="chart_short" style="width: 100%; height: 400px;"></div>
+    <div id="chart_complexity" style="width: 100%; height: 400px;"></div>
+    <div id="chart_in_dictionary" style="width: 100%; height: 400px;"></div>
+    <div id="chart_complexite" style="width: 100%; height: 400px;"></div>
   </div>
 </div>
 
@@ -53,6 +153,6 @@
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
